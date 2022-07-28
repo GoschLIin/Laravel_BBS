@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBbsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('bbs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title',100)->nullable();
+            $table->string('image',255);
+            $table->text('contents')->nullable();
+ 
+
+            $table->integer('created_by');
+            $table->timestamp('created_at')->nullable();
+
+            $table->integer('updated_by');
+            $table->timestamp('updated_at')->nullable();
+
+            $table->timestamp('deleted_at')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('bbs');
+    }
+}
